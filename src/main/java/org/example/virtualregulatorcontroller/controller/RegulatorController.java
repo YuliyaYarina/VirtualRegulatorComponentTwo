@@ -1,12 +1,10 @@
 package org.example.virtualregulatorcontroller.controller;
 
-import jakarta.servlet.annotation.HandlesTypes;
 import org.example.service.Regulator; //*
 import org.example.service.VirtualRegulatorService; //*
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
