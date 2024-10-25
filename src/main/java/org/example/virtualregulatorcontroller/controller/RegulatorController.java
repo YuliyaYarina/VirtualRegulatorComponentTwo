@@ -1,5 +1,6 @@
 package org.example.virtualregulatorcontroller.controller;
 
+import jakarta.servlet.annotation.HandlesTypes;
 import org.example.service.Regulator; //*
 import org.example.service.VirtualRegulatorService; //*
 import org.springframework.http.ResponseEntity;
@@ -17,24 +18,22 @@ public class RegulatorController {
     }
 
     @PostMapping("/set")
-    public ResponseEntity<Void> setTemperature(@RequestHeader("test") float inData) {
-        regulator.adjustTemp((byte) 0b00000100, inData , null, 1);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Integer> setTemperature(@RequestHeader("test") List<Float> outData) {
+        return ResponseEntity.ok(regulator.setTemperatura(outData));
     }
 
     @GetMapping("/current")
     public ResponseEntity<Integer> getCurrentTemperature(@RequestHeader("test") float inData) {
-        return ResponseEntity.ok(regulator.adjustTemp((byte) 0b00010000, inData, null, 1));
+        return ResponseEntity.ok(regulator.getValuesTemperature());
     }
 
     @GetMapping("/recent")
-    public ResponseEntity<List<Integer>> getRecent(@RequestHeader("test") float inData, @RequestHeader("test") int offsetOut) {
-        return ResponseEntity.ok(Collections.singletonList(regulator.adjustTemp((byte) 0b00010000, inData, null, offsetOut)));
+    public ResponseEntity<Integer> getRecent( @RequestHeader("test") int offsetOut) {
+        return ResponseEntity.ok(regulator.getLastValues(offsetOut));
     }
 
-    @PostMapping("/clear")
-    public ResponseEntity<Void> clearList(@RequestHeader("test") int inData) {
-        regulator.adjustTemp((byte) 0b10000000, inData, null, 3);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/clear")
+    public ResponseEntity<Integer> clearList() {
+        return ResponseEntity.ok(regulator.deleteValuesTemperature());
     }
 }
