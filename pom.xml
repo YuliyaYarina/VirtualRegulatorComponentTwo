@@ -30,6 +30,14 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
+    <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>regulator</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/libs/regulator.jar-1.0-SNAPSHOT.jar</systemPath>
+    </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -45,18 +53,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>regulator</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/regulator.jar-1.0-SNAPSHOT.jar</systemPath>
         </dependency>
 
     </dependencies>
