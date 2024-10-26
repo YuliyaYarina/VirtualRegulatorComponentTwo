@@ -11,6 +11,7 @@ import java.util.List;
 public class RegulatorController {
 
     private final Regulator regulator;
+
     public RegulatorController() {
         this.regulator = new VirtualRegulatorService();;
     }
@@ -21,7 +22,7 @@ public class RegulatorController {
     }
 
     @GetMapping("/current")
-    public ResponseEntity<Integer> getCurrentTemperature(@RequestHeader("test") float inData) {
+    public ResponseEntity<Integer> getCurrentTemperature() {
         return ResponseEntity.ok(regulator.getValuesTemperature());
     }
 
